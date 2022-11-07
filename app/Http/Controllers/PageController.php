@@ -7,23 +7,23 @@ use Illuminate\Http\Request;
 use MF\Controllers\ApiResponse;
 use MF\Controllers\ControllerResources;
 
-class PostController extends Controller
+class PageController extends Controller
 {
     use ApiResponse;
     use ControllerResources{
         ControllerResources::__construct as private __ctrlResConstruct;}
 
     public $namaModel=Post::class;
-    public $title="Post";
-    public $controllerName='post';
+    public $title="Page";
+    public $controllerName='page';
 
 
     public function __construct()
     {
         $this->__ctrlResConstruct();
-        $this->addAction=route('kehamilan.create');
-        $this->saveAction=route('kehamilan.store');
-        $this->readAction=route('kehamilan.index');
+        $this->addAction=route('page.create');
+        $this->saveAction=route('page.store');
+        $this->readAction=route('page.index');
     }
 
        /**
@@ -48,7 +48,7 @@ class PostController extends Controller
      * Otherwise, the request will fail with a 400 error, and a response listing the failed services.
      **/
     public function show($slug){
-        $pc=Post::with('categories')->where('slug',$slug);
+        $pc=Post::where('post_type','page')->where('slug',$slug);
 
         if($pc->count())  return $this->success($pc->get(),'Berhasil');
         else return response()->noContent();
