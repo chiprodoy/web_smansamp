@@ -21,9 +21,9 @@ class PostController extends Controller
     public function __construct()
     {
         $this->__ctrlResConstruct();
-        $this->addAction=route('kehamilan.create');
-        $this->saveAction=route('kehamilan.store');
-        $this->readAction=route('kehamilan.index');
+        $this->addAction=route('post.create');
+        $this->saveAction=route('post.store');
+        $this->readAction=route('post.index');
     }
 
        /**
