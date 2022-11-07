@@ -21,7 +21,7 @@ class PageController extends Controller
     public function __construct()
     {
         $this->__ctrlResConstruct();
-        $this->addAction=route('page.create');
+        //$this->addAction=route('page.create');
         $this->saveAction=route('page.store');
         $this->readAction=route('page.index');
     }
