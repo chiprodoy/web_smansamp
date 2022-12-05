@@ -32,7 +32,7 @@
                             </x-viho::form-group>
                             <x-viho::form-group>
                                 <div class="checkbox">
-                                    <x-viho::form.input-checkbox name="remember" id="remember_me" />
+                                    <input type="checkbox" name="remember" id="remember_me" />
                                     <label class="text-muted" for="remember_me">{{ __('Remember me') }}</label>
                                 </div>
                                 @if (Route::has('password.request'))
@@ -41,7 +41,9 @@
 
                             </x-viho::form-group>
                             <x-viho::form-group>
-                                <x-viho::link-button class="btn-primary btn-block" onclick="document.getElementById('loginform').submit();">{{ __('Log in') }}</x-viho::link-button>
+                                <div class="row">
+                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('loginform').submit();">{{ __('Log in') }}</button>
+                                </div>
                             </x-viho::form-group>
                             @if (Route::has('register'))
                                 <p>Don't have account?<a class="ms-2" href="{{ route('register')}}">Create Account</a></p>

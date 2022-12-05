@@ -1,1 +1,6 @@
-<a {{ $attributes->merge(['class'=>'btn']) }}>{{ $slot }}</a>
+<a {{ $attributes }} href='{{$href}}'>
+    @if(isset($icon))
+        <i data-feather='{{$icon}}'></i>
+    @endif
+    {{ $slot }}
+</a>

@@ -1,6 +1,6 @@
 <div class="table-responsive">
-    <table class="table table-sm">
-        <thead class="table-primary">
+    <table class="table table-sm table-stripe">
+        <thead class="{{$theadClass}}">
             <tr>
                 <th scope="col">#</th>
 
@@ -12,32 +12,68 @@
         </thead>
         <tbody>
             @foreach ($record as $item)
-                <tr>
-                    <td scope="row"><input type="checkbox" class="datachecked" value="{{ $item->id}}"/></td>
-                    @foreach ($column as $col)
-                        <td >{{ substr(strip_tags($item->{$col['field']}),0,200) }}</td>
-                    @endforeach
-                        <td>
-                            @can('update', $item)
-                                @if (strpos($editButton,'http')===0)
-                                    <x-viho::link-button class="btn-warning btn-xs" href='{{ $editButton}}'><i data-feather="pencil"></i>Edit</x-viho::link-button> <br/>
-                                @else
-                                    <x-viho::link-button class="btn-warning btn-xs" href='{{ route($editButton,$item->id) }}'><i data-feather="pencil"></i>Edit</x-viho::link-button> <br/>
-                                @endif
-                            @endcan
-                            @can('delete', $item)
-                                @if (strpos($deleteButton,'http')===0)
-                                    <x-viho::button class="btn-danger btn-xs" onclick="destroy('{{ $deleteButton}}')"><i data-feather="trash-2"></i>Delete</x-viho::button>
-                                @else
-                                    <x-viho::button class="btn-danger btn-xs" onclick="destroy('{{ route($deleteButton,$item->id) }}')"><i data-feather="trash-2"></i>Delete</x-viho::button> <br/>
-                                @endif
-                            @endcan
+                {{-- @canany(['update', 'delete'], $item) --}}
+                    <tr>
+                        <td scope="row"><input type="checkbox" class="datachecked" value="{{ $item->id}}"/></td>
+                        @foreach ($column as $col)
 
-                        </td>
-                </tr>
+                            @if ($loop->first)
+                                <td width='15%'>
+                                    @if (strpos($showButton,'http')===0)
+                                        <a href="{{ $showButton }}">{{ substr(strip_tags($item->{$col['field']}),0,200) }}</a> </td>
+                                    @else
+                                        <a href="{{ route($showButton,$item->uuid) }}">{{ substr(strip_tags($item->{$col['field']}),0,200) }}</a> </td>
+                                    @endif
+                            @else
+                                @if (isset($col['render']))
+                                    <td>
+                                        @php
+                                            if(is_array($col['render'])){
+                                                $rndr=$col['render'][0]::find($item->{$col['field']});
+                                                echo $rndr->{$col['render'][1]};
+                                            }else{
+                                                echo $item->{$col['render']}($item->{$col['field']});
+                                            }
+
+                                        @endphp
+                                    </td>
+                                @else
+                                    <td >{{ substr(strip_tags($item->{$col['field']}),0,200) }}</td>
+
+                                @endif
+                            @endif
+                        @endforeach
+                            <td>
+                                <div class="row">
+                                    @isset($editButton)
+                                        @can('update', $item)
+                                            @if (strpos($editButton,'http')===0)
+                                                <x-viho::link-button class="btn-secondary btn-sm" href='{{ $editButton}}'><i data-feather="pencil"></i>Edit</x-viho::link-button>
+                                            @else
+                                                <x-viho::link-button class="btn-secondary btn-sm" href='{{ route($editButton,$item->uuid) }}'><i data-feather="pencil"></i>Edit</x-viho::link-button>
+                                            @endif
+                                        @endcan
+                                    @endisset
+                                    @isset($deleteButton)
+                                        @can('delete', $item)
+                                            @if (strpos($deleteButton,'http')===0)
+                                                <x-viho::link-button class="btn-danger btn-sm" href="#" onclick="destroy('{{ $deleteButton}}')"><i data-feather="trash-2"></i>Delete</x-viho::button>
+                                            @else
+                                                <x-viho::link-button class="btn-danger btn-sm" href="#" onclick="destroy('{{ route($deleteButton,$item->uuid) }}')"><i data-feather="trash-2"></i>Delete</x-viho::button>
+                                            @endif
+                                        @endcan
+                                    @endisset
+
+                                </div>
+                            </td>
+                    </tr>
+                {{-- @endcanany --}}
             @endforeach
         </tbody>
     </table>
-    {{$record->links()}}
-Menampilkan {{$record->firstItem()}} dari {{ $record->total() }}
+    @if ($record instanceof \Illuminate\Pagination\AbstractPaginator)
+        {{$record->links()}}
+        Menampilkan record {{$record->firstItem()}} sampai {{ $record->total() }}
+
+    @endif
 </div>

@@ -4,16 +4,14 @@ namespace App\View\Components\Viho\Form;
 
 use Illuminate\View\Component;
 
-class InputCheckbox extends Component
+class InputCheckbox extends Input
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    public $checked;
+    public function __construct($id,$name,$dataSource=null,$label='',$value='',$placeholder='',$required=false,$readonly=false,$disabled=false,$autofocus=false,$tabindex=null,$checked='')
     {
-        //
+        $this->checked=$checked;
+        parent::__construct($id,$name,$dataSource,$label,$value,$placeholder,$required,$readonly,$disabled,$autofocus,$tabindex);
     }
 
     /**
@@ -23,6 +21,7 @@ class InputCheckbox extends Component
      */
     public function render()
     {
+
         return view('components.viho.form.input-checkbox');
     }
 }
