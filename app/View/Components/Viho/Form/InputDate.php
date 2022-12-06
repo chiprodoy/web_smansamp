@@ -11,7 +11,7 @@ class InputDate extends Input
      *
      * @return void
      */
-    public function __construct($id,$name,$datasource=null,$label='',$value='',$placeholder='',$required=false,$readonly=false,$disabled=false,$autofocus=false,$tabindex=null,$option,$select2=false)
+    public function __construct($id,$name,$datasource=null,$label='',$value='',$placeholder='',$required=false,$readonly=false,$disabled=false,$autofocus=false,$tabindex=null)
     {
         parent::__construct($id,$name,$datasource,$label,$value,$placeholder,$required,$readonly,$disabled,$autofocus,$tabindex);
     }

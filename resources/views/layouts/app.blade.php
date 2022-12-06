@@ -55,19 +55,19 @@
           <div class="left-menu-header col">
             <ul>
               <li>
-                <form class="form-inline search-form">
+                {{-- <form class="form-inline search-form">
                   <div class="search-bg"><i class="fa fa-search"></i>
                     <input class="form-control-plaintext" placeholder="Search here.....">
                   </div>
                 </form>
-                <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
+                <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span> --}}
               </li>
             </ul>
           </div>
           <div class="nav-right col pull-right right-menu p-0">
             <ul class="nav-menus">
               <li class="onhover-dropdown p-0">
-                <button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button>
+                <a class="btn btn-primary-light" href="{{ route('logout')}}" type="button"><i data-feather="log-out"></i>Log out</a>
               </li>
             </ul>
           </div>
