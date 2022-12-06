@@ -31,10 +31,10 @@
                                 <x-viho::form.input-password name="password" id="password" required placeholder="Password" />
                             </x-viho::form-group>
                             <x-viho::form-group>
-                                <div class="checkbox">
+                                {{-- <div class="checkbox">
                                     <input type="checkbox" name="remember" id="remember_me" />
                                     <label class="text-muted" for="remember_me">{{ __('Remember me') }}</label>
-                                </div>
+                                </div> --}}
                                 @if (Route::has('password.request'))
                                     <a class="link" href="{{ route('password.request')}}">{{ __('Forgot your password?') }}</a>
                                 @endif
