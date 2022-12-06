@@ -11,12 +11,29 @@ use Illuminate\Database\Eloquent\Model;
 class ProdukHalal extends Model
 {
     use HasFactory;
-        /**
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'nama_produk',
+        'pelaku_usaha',
+        'jenis_produk_id',
+        'nmr_kh_mui',
+        'masaberlaku_kh_mui',
+        'nmr_sertifikat_mui',
+        'masaberlaku_sertifikat_mui',
+    ];
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    public static $columns = [
+
+     public static $columns = [
         ['field'=>'nama_produk','title'=>'Nama Produk'],
         ['field'=>'pelaku_usaha','title'=>'Pelaku Usaha'],
         ['field'=>'jenis_produk_id','title'=>'Jenis Produk'],

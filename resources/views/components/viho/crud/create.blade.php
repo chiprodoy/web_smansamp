@@ -5,7 +5,7 @@
         @csrf
         <div class="card-header">{{ $CURRENT_PAGE->title }}</div>
         <div class="card-body">
-            @if (Session::has('response'))
+            @if (Session::has('response.message'))
                 <x-viho::alert id="alert_notif" class="alert-info">
                     @foreach (Session::get('response') as $item)
                         {{ $item }}
