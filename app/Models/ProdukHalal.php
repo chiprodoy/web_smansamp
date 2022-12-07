@@ -7,6 +7,7 @@ use App\View\Components\Viho\Form\InputSelect;
 use App\View\Components\Viho\Form\InputText;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class ProdukHalal extends Model
 {
@@ -25,6 +26,7 @@ class ProdukHalal extends Model
         'masaberlaku_kh_mui',
         'nmr_sertifikat_mui',
         'masaberlaku_sertifikat_mui',
+        'uuid'
     ];
 
     /**
@@ -64,5 +66,7 @@ class ProdukHalal extends Model
         ['field'=>'masaberlaku_sertifikat_mui','title'=>'Masa Berlaku Sertifikat MUI','type'=>InputDate::class],
     ];
 
-
+    public function setUuidAttribute($alue){
+        if(empty($value)) $this->attributes['uuid']=Str::uuid();
+    }
 }

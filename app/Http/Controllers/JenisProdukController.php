@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JenisProdukRequest;
 use App\Models\JenisProduk;
 use Illuminate\Http\Request;
 
@@ -20,4 +21,18 @@ class JenisProdukController extends BackendController
     public $titleOfEditPage='Edit Jenis Produk';
     public $titleOfIndexPage='Jenis Produk';
 
+    public function store(JenisProdukRequest $request){
+        return parent::insertRecord($request);
+    }
+       /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $uid)
+    {
+        return parent::updateRecord($request,$uid);
+    }
 }

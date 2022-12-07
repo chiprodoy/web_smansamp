@@ -10,13 +10,12 @@ class LinkButton extends Component
 
     public $icon;
 
-    public $class;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($href=null,$icon=null,$class='')
+    public function __construct($href=null,$icon=null)
     {
         if(is_array($href)){
             $this->href=route($href[0],$href[1]);
@@ -30,7 +29,6 @@ class LinkButton extends Component
         }
 
         $this->icon=$icon;
-        $this->class=$class;
     }
 
     /**

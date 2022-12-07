@@ -103,18 +103,12 @@ class BackendController extends Controller
         $this->setBreadCrumb();
         return view($this->viewNameOfEditPage,get_object_vars($this));
     }
-      /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+
+    public function insertRecord($request){
         $this->setNewData($request);
         try
         {
-            $result=$this->insertRecord();
+            $result=$this->modelRecords::create($this->newData);
             return $this->success($result,$request,route($this->createURL),'Data Berhasil Disimpan');
         }
         catch(QueryException $e)
@@ -125,15 +119,25 @@ class BackendController extends Controller
         }
 
     }
-
-    public function insertRecord(){
-        return $this->modelRecords::create($this->newData);
-    }
     /*
 
     */
-    public function updateRecord($uid){
-        return $this->modelRecords::where('uuid',$uid)->update($this->newData);
+    public function updateRecord($request,$uid){
+        try
+        {
+            $this->setNewData($request);
+
+            $updated=$this->modelRecords::where('uuid',$uid)->update($this->newData);
+
+            return $this->success($updated,$request,route($this->editURL,$uid),'Data Berhasil Diupdate');
+        }
+        catch(QueryException $e)
+        {
+            if(env('APP_DEBUG')) return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,$e->getMessage());
+            else return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,'Data Gagal Diupdate');
+
+        }
+
     }
     /*
     *
@@ -148,30 +152,7 @@ class BackendController extends Controller
             $this->newData["$field"]=$request->$field;
         } */
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $uid)
-    {
-        try
-        {
-            $this->setNewData($request);
 
-            $updated=$this->updateRecord($uid);
-
-            return $this->success($updated,$request,route($this->editURL,$uid),'Data Berhasil Diupdate');
-        }
-        catch(QueryException $e)
-        {
-            if(env('APP_DEBUG')) return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,$e->getMessage());
-            else return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,'Data Gagal Diupdate');
-
-        }
-    }
        /**
      * Remove the specified resource from storage.
      *
