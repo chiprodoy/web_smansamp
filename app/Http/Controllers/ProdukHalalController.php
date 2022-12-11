@@ -23,7 +23,7 @@ class ProdukHalalController extends BackendController
     //
 
     public function store(ProdukHalalRequest $request){
-        parent::insertRecord($request);
+        return parent::insertRecord($request);
     }
 
        /**
