@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use MF\Controllers\ApiResponse;
 use MF\Controllers\BreadCrumb;
 use MF\Controllers\DataTable;
@@ -113,6 +114,7 @@ class BackendController extends Controller
         }
         catch(QueryException $e)
         {
+            Log::error($e);
             if(env('APP_DEBUG')) return $this->error($request,route($this->createURL),ResponseCode::ERROR,$e->getMessage());
             else return $this->error($request,route($this->createURL),ResponseCode::ERROR,'Data Gagal Disimpan');
 
@@ -133,6 +135,7 @@ class BackendController extends Controller
         }
         catch(QueryException $e)
         {
+            Log::error($e);
             if(env('APP_DEBUG')) return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,$e->getMessage());
             else return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,'Data Gagal Diupdate');
 
