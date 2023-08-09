@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <form method="POST" action="{{ route($updateURL,$RECORD->uuid)}}">
+    <form method="POST" action="{{ route($updateURL,$RECORD->uuid)}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card-header">

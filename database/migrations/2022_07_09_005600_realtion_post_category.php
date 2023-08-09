@@ -18,6 +18,7 @@ class RealtionPostCategory extends Migration
         Schema::create('post_post_category', function (Blueprint $table) {
             $table->foreignIdFor(Post::class);
             $table->foreignIdFor(PostCategory::class);
+            $table->string('user_modify');
 
         });
     }

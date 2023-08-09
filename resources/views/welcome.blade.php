@@ -1,315 +1,406 @@
-@extends('layouts.default.index')
+@extends('layouts.impact.index')
 @section('content')
-    <div id="root">
-        <div class="bg-bg-home bg-cover">
-            <nav class="bg-transparent">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16 items-center">
-                        <div class="flex">
-                            <div class="shrink-0 flex items-center pl-5"><a class="text-xl" href="/lppom"><img
-                                        src="/src/assets/img/logo.png" class="w-28" alt=""></a></div>
-                            <div class="hidden space-x-3 sm:-my-px sm:ml-10 sm:flex"></div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <div class="mt-10 text-center text-main-50 basis-[10%]">
-                <h1 class=" text-4xl font-bold">Kembangkan Bisnis Anda</h1>
-                <h2 class="text-white text-3xl font-bold">Bersama Kami</h2>
-                <p class="text-white px-3 mt-3">Dengan memenuhi regulasi pemerintah indonesia dan standar halal dunia
-            </div>
-            <main class="bg-white relative">
-                <div class=" mt-10 rounded-t-lg basis-[90%]  px-3">
-                    <div class="w-full lg:w-2/4 mx-auto relative h-60">
-                        <div
-                            class="px-5 py-3  text-center lg:bg-white lg:absolute lg:-top-8 lg:w-full lg:shadow-lg lg:rounded-lg">
-                            <h1 class="text-lg font-bold">Cek produk halal</h1>
-                            <p>Acuan sertifikasi halal : 23000</p>
-                            <div class="flex flex-col items-center sm:flex-row">
-                                <div class="MuiFormControl-root w-full  css-1869usk-MuiFormControl-root"><label
-                                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
-                                        data-shrink="false" id="demo-simple-select-standard-label">Cari
-                                        berdasarkan</label>
-                                    <div
-                                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl  css-a3l6o-MuiInputBase-root-MuiInput-root-MuiSelect-root">
-                                        <div tabindex="0" role="button" aria-expanded="false"
-                                            aria-haspopup="listbox"
-                                            aria-labelledby="demo-simple-select-standard-label demo-simple-select-standard"
-                                            id="demo-simple-select-standard"
-                                            class="MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input">
-                                            <span class="notranslate">​</span></div><input aria-hidden="true"
-                                            tabindex="-1"
-                                            class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                                            value=""><svg
-                                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon"
-                                            focusable="false" aria-hidden="true" viewBox="0 0 24 24"
-                                            data-testid="ArrowDropDownIcon">
-                                            <path d="M7 10l5 5 5-5z"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div
-                                    class="MuiFormControl-root MuiTextField-root w-full css-1u3bzj6-MuiFormControl-root-MuiTextField-root">
-                                    <label
-                                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
-                                        data-shrink="false" for="standard-basic" id="standard-basic-label">Masukan
-                                        kata kunci</label>
-                                    <div
-                                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root">
-                                        <input aria-invalid="false" id="standard-basic" type="text"
-                                            class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
-                                            value=""></div>
-                                </div>
-                            </div><button
-                                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
-                                tabindex="0" type="button"
-                                style="background-color: rgb(138, 225, 45); margin-top: 15px;">Cari<span
-                                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"></span></button>
-                        </div>
-                    </div>
-                    <div class="">
-                        <h1 class="text-xl text-main">Produk Halal</h1>
-                        <h4 class="">Produk - Produk Halal yang Baru Ditambahkan</h4>
-                        <div class="flex w-[90%] lg:w-full overflow-x-scroll ">
-                            <div class="min-w-[180px] sm:min-w-[200px] bg-cover  sm:h-56  mb-3 border mr-5 p-3"
-                                style="background-image: url(&quot;/src/assets/img/produk1-edit.png&quot;);">
-                                <div class="flex flex-col  h-full justify-between">
-                                    <h1 class="text-white mb-5">Cimory Minuman Yogurt Rasa Original (Original Yogurt
-                                        Drink)</h1><button
-                                        class="bg-white rounded-lg w-3/4 mx-auto px-3 py-1">Detail</button>
-                                </div>
-                            </div>
-                            <div class="min-w-[180px] sm:min-w-[200px] bg-cover  sm:h-56  mb-3 border mr-5 p-3"
-                                style="background-image: url(&quot;/src/assets/img/produk1-edit.png&quot;);">
-                                <div class="flex flex-col  h-full justify-between">
-                                    <h1 class="text-white mb-5">Cimory Minuman Yogurt Rasa Original (Original Yogurt
-                                        Drink)</h1><button
-                                        class="bg-white rounded-lg w-3/4 mx-auto px-3 py-1">Detail</button>
-                                </div>
-                            </div>
-                            <div class="min-w-[180px] sm:min-w-[200px] bg-cover  sm:h-56  mb-3 border mr-5 p-3"
-                                style="background-image: url(&quot;/src/assets/img/produk1-edit.png&quot;);">
-                                <div class="flex flex-col  h-full justify-between">
-                                    <h1 class="text-white mb-5">Cimory Minuman Yogurt Rasa Original (Original Yogurt
-                                        Drink)</h1><button
-                                        class="bg-white rounded-lg w-3/4 mx-auto px-3 py-1">Detail</button>
-                                </div>
-                            </div>
-                            <div class="min-w-[180px] sm:min-w-[200px] bg-cover  sm:h-56  mb-3 border mr-5 p-3"
-                                style="background-image: url(&quot;/src/assets/img/produk1-edit.png&quot;);">
-                                <div class="flex flex-col  h-full justify-between">
-                                    <h1 class="text-white mb-5">Cimory Minuman Yogurt Rasa Original (Original Yogurt
-                                        Drink)</h1><button
-                                        class="bg-white rounded-lg w-3/4 mx-auto px-3 py-1">Detail</button>
-                                </div>
-                            </div>
-                            <div class="min-w-[180px] sm:min-w-[200px] bg-cover  sm:h-56  mb-3 border mr-5 p-3"
-                                style="background-image: url(&quot;/src/assets/img/produk1-edit.png&quot;);">
-                                <div class="flex flex-col  h-full justify-between">
-                                    <h1 class="text-white mb-5">Cimory Minuman Yogurt Rasa Original (Original Yogurt
-                                        Drink)</h1><button
-                                        class="bg-white rounded-lg w-3/4 mx-auto px-3 py-1">Detail</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex mt-14 items-center">
-                            <h1 class="text-3xl text-main-50 ml-12">Berita</h1><img src="/src/assets/img/line.png"
-                                class="h-1 ml-8" alt="">
-                            <h4 class="text-lg font-semibold ml-5">ALL</h4>
-                            <h4 class="text-lg ml-5">Berita Utama</h4>
-                            <h4 class="text-lg ml-5">Berita pangan halal</h4>
-                            <h1 class="text-3xl text-main-50 ml-12">Berita terkini</h1><img
-                                src="/src/assets/img/line.png" class="h-1 ml-8" alt="">
-                        </div>
-                        <div class="flex mt-3">
-                            <div class="flex basis-[70%] ">
-                                <div class=""><img src="/src/assets/img/gambar1.png" class="mb-3"
-                                        alt=""><small>01 Agustus, 2022</small>
-                                    <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                        Keharamannya</h2>
-                                    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit id
-                                        fermentum arcu enim. Ultricies nunc ...</p>
-                                </div>
-                                <div class="basis-[70%]">
-                                    <div class="mb-3"><img src="/src/assets/img/gambar2.png" class="mb-1"
-                                            alt="">
-                                        <p>01 Agustus, 2022</p>
-                                        <div class="max-w-[75%]">
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit id
-                                                fermentum arcu enim. Ultricies nunc ...</p>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3"><img src="/src/assets/img/gambar2.png" class="mb-1"
-                                            alt="">
-                                        <p>01 Agustus, 2022</p>
-                                        <div class="max-w-[75%]">
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit id
-                                                fermentum arcu enim. Ultricies nunc ...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full ">
-                            <div class="flex">
-                                <div class="basis-full mr-3 ">
-                                    <div class="flex items-center">
-                                        <h1 class="text-2xl text-main-50">Artikel</h1><img
-                                            src="/src/assets/img/line.png" class="h-1 w-full ml-3" alt="">
-                                    </div>
-                                    <div class="flex basis-full justify-center ">
-                                        <div class=""><img src="/src/assets/img/gambar1.png" class="mb-3"
-                                                alt=""><small>01 Agustus, 2022</small>
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2>
-                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Elit id fermentum arcu enim. Ultricies nunc ...</p>
-                                        </div>
-                                        <div class=""><img src="/src/assets/img/gambar1.png" class="mb-3"
-                                                alt=""><small>01 Agustus, 2022</small>
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2>
-                                            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                Elit id fermentum arcu enim. Ultricies nunc ...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="basis-[50%]">
-                                    <div class="flex items-center">
-                                        <h1 class="text-2xl text-main-50">Fatwa</h1><img
-                                            src="/src/assets/img/line.png" class="h-1 w-full ml-3" alt="">
-                                    </div>
-                                    <div class="flex mb-6"><img src="/src/assets/img/gambar2.png"
-                                            class="mr-3 w-20 h-20" alt="">
-                                        <div class="">
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                        </div>
-                                    </div>
-                                    <div class="flex mb-6"><img src="/src/assets/img/gambar2.png"
-                                            class="mr-3 w-20 h-20" alt="">
-                                        <div class="">
-                                            <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan
-                                                Potensi Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex mt-11">
-                            <div class="basis-[68%] grid grid-cols-2">
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                                <div class="flex mb-6"><img src="/src/assets/img/gambar2.png" class="mr-3 w-20 h-20"
-                                        alt="">
-                                    <div class="">
-                                        <h2 class="text-lg font-semibold my-3 ">Pengawetan Makanan Minuman dan Potensi
-                                            Keharamannya</h2><small>01 Agustus, 2022 | oleh Admin</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="">
-                                <div class="flex items-center">
-                                    <h1 class="text-2xl text-main-50">Galeri</h1><img src="/src/assets/img/line.png"
-                                        class="h-1 w-full ml-3" alt="">
-                                </div>
-                                <div class="grid grid-cols-3 gap-3"><img src="/src/assets/img/gambar3.png"
-                                        alt=""><img src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""><img
-                                        src="/src/assets/img/gambar3.png" alt=""></div>
-                            </div>
-                        </div>
-                        <div class="mt-16 ">
-                            <h1 class="text-2xl text-main-50 font-bold mb-8">Subsidiaries</h1>
-                            <div class="flex justify-center"><img src="/src/assets/img/gambar4.png" class="mr-12"
-                                    alt=""><img src="/src/assets/img/gambar4.png" class="mr-12"
-                                    alt=""><img src="/src/assets/img/gambar4.png" class="mr-12"
-                                    alt=""><img src="/src/assets/img/gambar4.png" class="mr-12"
-                                    alt=""></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="z-20">
-                    <div class="flex   bg-[#393733] text-white  mt-28 py-5 px-10  rounded-xl w-[80%] mx-auto">
-                        <div class=" mr-24"><img src="/src/assets/img/logo.png" class="w-32" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque arcu, sit
-                                scelerisque et odio.</p>
-                        </div>
-                        <div class=" mr-24"><img src="/src/assets/img/logo.png" class="w-32" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque arcu, sit
-                                scelerisque et odio.</p>
-                        </div>
-                        <div class=" mr-24"><img src="/src/assets/img/logo.png" class="w-32" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque arcu, sit
-                                scelerisque et odio.</p>
-                        </div>
-                        <div class=" mr-24"><img src="/src/assets/img/logo.png" class="w-32" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque arcu, sit
-                                scelerisque et odio.</p>
-                        </div>
-                    </div>
-                    <p class="text-center mt-3">Copyright 2022 | Aksara Pena</p>
-                </div><img src="/src/assets/img/abs1.png" class="absolute bottom-0 left-0" alt=""><img
-                    src="/src/assets/img/abst2.png" class="absolute bottom-20 w-36 right-0" alt="">
-            </main>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+          <h2>Kembangkan Bisnis Anda <span>Bersama Kami</span></h2>
+          <p>Dengan memenuhi regulasi pemerintah indonesia dan standar halal dunia</p>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started">Get Started</a>
+            <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+          </div>
         </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          {{-- <img src="{{asset('theme/impact/assets/img/hero.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100"> --}}
+        </div>
+      </div>
     </div>
+
+    <div class="icon-boxes position-relative">
+        <div class="container position-relative">
+            <div class="row gy-4 mt-5">
+                <div class="col-xl-12 col-md-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <h4 class="title"><a href="#">Pencarian Produk Halal</a></h4>
+
+                        <form action="" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="col-md-12 input-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan nama produk" required />
+                                    <button class="btn btn-info" type="button" id="button-addon2">Cari</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--End Icon Box -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+  <main id="main">
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Profil LPPOM MUI SUMSEL</h2>
+          {{-- <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p> --}}
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <h3>{{$contentSejarah->title}}</h3>
+            {{-- <img src="{{asset('theme/impact/assets/img/logo.png')}}" class="img-fluid rounded-4 mb-4" alt=""> --}}
+           <p style="text-align: justify"> {{ Str::words(strip_tags($contentSejarah->description),80) }} <a href='#'>Selengkapnya</a></p>
+        </div>
+          <div class="col-lg-6">
+            <div class="borderbottom ps-0 ps-lg-5">
+              <ul>
+                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Visi & Misi</a></li>
+                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Nilai - Nilai</a></li>
+                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Struktur Organisasi</a></li>
+
+              </ul>
+
+              <div class="position-relative mt-4">
+                <img src="{{asset('theme/impact/assets/img/logo.png')}}" class="img-fluid rounded-4" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-out">
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-1.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-2.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact//img/clients/client-3.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-4.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-5.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-6.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-7.png')}}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{{asset('theme/impact/assets/img/clients/client-8.png')}}" class="img-fluid" alt=""></div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+     <!-- ======= Our Services Section ======= -->
+    <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Prosedur & Regulasi</h2>
+          {{-- <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p> --}}
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+            @foreach ($contentProsedurRegulasi as $item)
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item  position-relative">
+                    <h3>{{ $item->title}}</h3>
+                    <p>{{ $item->description}}</p>
+                    <a href="{{ route('post.show',$item->slug) }}" class="readmore stretched-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div><!-- End Service Item -->
+            @endforeach
+
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <h3>Regulasi LPPOM MUI</h3>
+              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <h3>Prosedur Pasar Indonesia</h3>
+              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <h3>Pendaftaran Sertifikat Halal</h3>
+              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-calendar4-week"></i>
+              </div>
+              <h3>Prosedur Pasar Luar Negri</h3>
+              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <h3>Prosedur Keluhan & Banding</h3>
+              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Our Services Section -->
+
+    <!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-posts" class="recent-posts sections-bg">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-header">
+            <h2>Berita Terbaru</h2>
+          </div>
+
+          <div class="row gy-4">
+
+            <div class="col-xl-4 col-md-6">
+                @foreach ($contentBerita as $item)
+                    <article>
+
+                        <div class="post-img">
+                        <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                        </div>
+                        @foreach ($item->categories as $cat)
+                            <p class="post-category">{{ $cat->name}}</p>
+                        @endforeach
+
+                        <h2 class="title">
+                        <a href="blog-details.html">{{ $item->title }}</a>
+                        </h2>
+
+                        <div class="d-flex align-items-center">
+                        <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                        <div class="post-meta">
+                            <p class="post-author">Maria Doe</p>
+                            <p class="post-date">
+                            <time datetime="{{ $item->created_at}}">{{ $item->created_at}}</time>
+                            </p>
+                        </div>
+                        </div>
+
+                    </article>
+                @endforeach
+
+            </div><!-- End post list item -->
+          </div><!-- End recent posts list -->
+
+        </div>
+      </section><!-- End Recent Blog Posts Section -->
+
+       <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="content px-xl-5">
+              <h3>Frequently Asked <strong>Questions</strong></h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+
+            <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    <span class="num">1.</span>
+                    Non consectetur a erat nam at lectus urna duis?
+                  </button>
+                </h3>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                    <span class="num">2.</span>
+                    Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                  </button>
+                </h3>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    <span class="num">3.</span>
+                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                  </button>
+                </h3>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                    <span class="num">4.</span>
+                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                  </button>
+                </h3>
+                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                    <span class="num">5.</span>
+                    Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                  </button>
+                </h3>
+                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+        </div>
+
+        <div class="row gx-lg-0 gy-4">
+
+          <div class="col-lg-4">
+
+            <div class="info-container d-flex flex-column align-items-center justify-content-center">
+              <div class="info-item d-flex">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h4>Location:</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h4>Email:</h4>
+                  <p>info@example.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-phone flex-shrink-0"></i>
+                <div>
+                  <h4>Call:</h4>
+                  <p>+1 5589 55488 55</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-clock flex-shrink-0"></i>
+                <div>
+                  <h4>Open Hours:</h4>
+                  <p>Mon-Sat: 11AM - 23PM</p>
+                </div>
+              </div><!-- End Info Item -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
 @endsection

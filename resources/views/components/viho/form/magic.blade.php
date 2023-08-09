@@ -13,6 +13,22 @@
         :required="isset($item['required']) ? $item['required'] : false"
      ></x-viho::form.input-text>
     @endif
+    @if ($item['type']==App\View\Components\Viho\Form\InputEmail::class)
+    @php
+    @endphp
+    <x-viho::form.input-email
+        :id="$item['field']"
+        :name="$item['field']"
+        :label="$item['title']"
+        :value="$extData"
+        :readonly="isset($item['readonly']) ? $item['readonly']:false"
+        :disabled="isset($item['disabled']) ? $item['disabled'] : false"
+        :autofocus="isset($item['autofocus']) ? $item['autofocus'] : false"
+        :tabindex="isset($item['tabindex']) ? $item['tabindex'] : null"
+        :placeholder="isset($item['placeholder']) ? $item['placeholder'] : ''"
+        :required="isset($item['required']) ? $item['required'] : false"
+     ></x-viho::form.input-email>
+    @endif
     @if ($item['type']==App\View\Components\Viho\Form\InputDate::class)
     <x-viho::form.input-date
         :id="$item['field']"
@@ -107,5 +123,35 @@
         :placeholder="isset($item['placeholder']) ? $item['placeholder'] : ''"
         :required="isset($item['required']) ? $item['required'] : false"
      ></x-viho::form.input-radio>
+    @endif
+    @if ($item['type']==App\View\Components\Viho\Form\InputFile::class)
+    <x-viho::form.input-file
+        :id="$item['field']"
+        :name="$item['field']"
+        :label="$item['title']"
+        :value="$extData"
+        :readonly="isset($item['readonly']) ? $item['readonly']:false"
+        :disabled="isset($item['disabled']) ? $item['disabled'] : false"
+        :autofocus="isset($item['autofocus']) ? $item['autofocus'] : false"
+        :tabindex="isset($item['tabindex']) ? $item['tabindex'] : null"
+        :placeholder="isset($item['placeholder']) ? $item['placeholder'] : ''"
+        :required="isset($item['required']) ? $item['required'] : false"
+        :datasource="isset($item['datasource']) ? $item['datasource']:null"
+
+     ></x-viho::form.input-file>
+    @endif
+    @if ($item['type']==App\View\Components\Viho\Form\InputPassword::class)
+    <x-viho::form.input-password
+        :id="$item['field']"
+        :name="$item['field']"
+        :label="$item['title']"
+        :value="$extData"
+        :readonly="isset($item['readonly']) ? $item['readonly']:false"
+        :disabled="isset($item['disabled']) ? $item['disabled'] : false"
+        :autofocus="isset($item['autofocus']) ? $item['autofocus'] : false"
+        :tabindex="isset($item['tabindex']) ? $item['tabindex'] : null"
+        :placeholder="isset($item['placeholder']) ? $item['placeholder'] : ''"
+        :required="isset($item['required']) ? $item['required'] : false"
+     ></x-viho::form.input-password>
     @endif
  @endforeach

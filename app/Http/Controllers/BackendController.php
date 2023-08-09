@@ -6,6 +6,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 use MF\Controllers\ApiResponse;
 use MF\Controllers\BreadCrumb;
 use MF\Controllers\DataTable;
@@ -39,6 +40,9 @@ class BackendController extends Controller
     public $newData;
     public $showWith=[];
     public $recordId;
+    public $modName;
+    public $createResult;
+    public $errorMsg;
 
     public function __construct()
     {
@@ -47,6 +51,9 @@ class BackendController extends Controller
         $this->BREADCRUMB_ITEM=[
             new Page('Home',route('dashboard'))
         ];
+
+        //$this->modName=$this->modelRecords;
+
     }
     /**
      * Display a listing of the resource.
@@ -57,8 +64,11 @@ class BackendController extends Controller
     {
         $this->CURRENT_PAGE=new Page($this->titleOfIndexPage,route($this->indexURL));
         $this->setBreadCrumb();
-
-        return view($this->viewNameOfIndexPage,get_object_vars($this));
+        if(view()->exists('admin.'.$this->modName.'.crud.index')){
+            return view('admin.'.$this->modName.'.crud.index',get_object_vars($this));
+        }else{
+            return view($this->viewNameOfIndexPage,get_object_vars($this));
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -69,7 +79,11 @@ class BackendController extends Controller
     {
         $this->CURRENT_PAGE=new Page($this->titleOfCreatePage,route($this->createURL));
         $this->setBreadCrumb();
-        return view($this->viewNameOfCreatePage,get_object_vars($this));
+        if(view()->exists('admin.'.$this->modName.'.crud.create')){
+            return view('admin.'.$this->modName.'.crud.create',get_object_vars($this));
+        }else{
+            return view($this->viewNameOfCreatePage,get_object_vars($this));
+        }
 
     }
     /**
@@ -81,9 +95,18 @@ class BackendController extends Controller
     public function show($uid)
     {
         $this->RECORD=$this->modelRecords::where('uuid',$uid)->first();
-        $this->indexPage=new Page($this->titleOfIndexPage,route($this->indexURL));
+        if(Route::has($this->indexURL)){
+            $this->indexPage=new Page($this->titleOfIndexPage,route($this->indexURL));
+        }else{
+            $this->indexPage=new Page($this->titleOfIndexPage,route_from($this->indexURL));
+
+        }
         array_push($this->BREADCRUMB_ITEM,$this->indexPage);
-        $this->CURRENT_PAGE=new Page($this->titleOfShowPage,route($this->showURL,$uid));
+        if(Route::has($this->indexURL)){
+            $this->CURRENT_PAGE=new Page($this->titleOfShowPage,route($this->showURL,$uid));
+        }else{
+            $this->CURRENT_PAGE=new Page($this->titleOfShowPage,route_from($this->showURL,$this->RECORD));
+        }
         $this->setBreadCrumb();
         $this->recordId=$uid;
         return view($this->viewNameOfShowPage,get_object_vars($this));
@@ -97,26 +120,49 @@ class BackendController extends Controller
      */
     public function edit($uid)
     {
-        $this->RECORD=$this->modelRecords::where('uuid',$uid)->first();
-        $this->indexPage=new Page($this->titleOfIndexPage,route($this->indexURL));
+        //$this->RECORD=$this->modelRecords::where('uuid',$uid)->first();
+        $this->setRecord($uid);
+        $this->indexPage=new Page($this->titleOfIndexPage,route_from($this->indexURL,$this->RECORD));
         array_push($this->BREADCRUMB_ITEM,$this->indexPage);
-        $this->CURRENT_PAGE=new Page($this->titleOfEditPage,route($this->editURL,$uid));
+        $this->CURRENT_PAGE=new Page($this->titleOfEditPage,'#');
         $this->setBreadCrumb();
-        return view($this->viewNameOfEditPage,get_object_vars($this));
+        if(view()->exists('admin.'.$this->modName.'.crud.edit')){
+            return view('admin.'.$this->modName.'.crud.edit',get_object_vars($this));
+        }else{
+            return view($this->viewNameOfEditPage,get_object_vars($this));
+        }
+    }
+    public function setRecord($uid){
+        $this->RECORD=$this->modelRecords::where('uuid',$uid)->first();
     }
 
     public function insertRecord($request){
         $this->setNewData($request);
+        if(strpos($this->createURL,'http'===false)){
+            $this->createURL=route_from($this->createURL);
+        }
         try
         {
-            $result=$this->modelRecords::create($this->newData);
-            return $this->success($result,$request,route($this->createURL),'Data Berhasil Disimpan');
+            $this->createResult=$this->modelRecords::create($this->newData);
+            return $this->output('success',$request,'Data Berhasil Disimpan',$this->createURL);
         }
         catch(QueryException $e)
         {
+            $this->errorMsg='Data Gagal Disimpan '.$e->getMessage();
             Log::error($e);
-            if(env('APP_DEBUG')) return $this->error($request,route($this->createURL),ResponseCode::ERROR,$e->getMessage());
-            else return $this->error($request,route($this->createURL),ResponseCode::ERROR,'Data Gagal Disimpan');
+            if(env('APP_DEBUG')) return $this->output('error',$request,$e->getMessage(),$this->createURL);
+            else return $this->output('error',$request,'Data Gagal Disimpan',$this->createURL);
+
+        }
+
+    }
+
+    public function output($type,$request,$message,$redirectURL=null){
+        if(Route::has($redirectURL)) $redirectURL=route($redirectURL);
+        if($type=='success'){
+            return $this->iSuccess($this->createResult,$request,$redirectURL,$message);
+        }else{
+            if(env('APP_DEBUG')) return $this->iError($request,$redirectURL,ResponseCode::ERROR,$message);
 
         }
 
@@ -127,17 +173,19 @@ class BackendController extends Controller
     public function updateRecord($request,$uid){
         try
         {
+           $this->setRecord($uid);
             $this->setNewData($request);
+            //$record=$this->modelRecords::where('uuid',$uid);
+           // $updated=$record->update($this->newData);
+           $updated=$this->RECORD->update($this->newData);
 
-            $updated=$this->modelRecords::where('uuid',$uid)->update($this->newData);
-
-            return $this->success($updated,$request,route($this->editURL,$uid),'Data Berhasil Diupdate');
+            return $this->iSuccess($updated,$request,route_from($this->editURL,$this->RECORD),'Data Berhasil Diupdate');
         }
         catch(QueryException $e)
         {
             Log::error($e);
-            if(env('APP_DEBUG')) return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,$e->getMessage());
-            else return $this->error($request,route($this->editURL,$uid),ResponseCode::ERROR,'Data Gagal Diupdate');
+            if(env('APP_DEBUG')) return $this->iError($request,route_from($this->editURL,$this->RECORD),ResponseCode::ERROR,$e->getMessage());
+            else return $this->iError($request,route_from($this->editURL,$this->RECORD),ResponseCode::ERROR,'Data Gagal Diupdate');
 
         }
 
@@ -149,6 +197,19 @@ class BackendController extends Controller
         $m=new $this->modelRecords;
         foreach($m->getFillable() as $k => $v){
             $this->newData["$v"]=$request->$v;
+            //if($m::$formFields[$v]['type']==\App\View\Components\Viho\Form\InputFile::class && $request->file($v)){
+            if($m::$formFields[$v]['type']==\App\View\Components\Viho\Form\InputFile::class){
+               // dd($request);
+                if(method_exists($this,'uploadMyFile')){
+                    if($request->hasFile($v)){
+                        $resultPath=$this->uploadMyFile($request->file($v));
+                    }else{
+                        $resultPath=$this->RECORD->getAttributes()[$v];
+                    }
+                        $this->newData["$v"]=$resultPath;
+                }
+            }
+
         }
 /*         foreach($this->modelRecords::$formFields as $k =>$v){
             $field=$v['field'];
@@ -181,6 +242,7 @@ class BackendController extends Controller
         $this->modelRecords=$this->modelRecords::orderBy('id','desc');
         $this->modelRecords->paginate($this->RECORD_PER_PAGE);
     }
+
 
 }
 

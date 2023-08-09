@@ -94,8 +94,8 @@ class DataTable extends Component
     public $order;
 
     public $extraButton;
-
-    public function __construct($model,$extData=null,$showButton=null,$editButton=null,$deleteButton=null,$where=null,$keyword=null,$order=null,$extraButton='')
+    public $setRecord;
+    public function __construct($model,$extData=null,$showButton=null,$editButton=null,$deleteButton=null,$where=null,$keyword=null,$order=null,$extraButton='',$setRecord=true)
     {
         $this->column=$model::$columns;
         $this->model=$model;
@@ -106,9 +106,9 @@ class DataTable extends Component
         $this->keyword=$keyword;
         $this->extData=$extData;
         $this->order=$order;
-        $this->record=$this->setRecord();
+        ($setRecord) ? $this->record=$this->setRecord() : $this->record=$extData;
+
         $this->extraButton=$extraButton;
-        //
     }
 
     protected function setRecord(){
@@ -127,7 +127,11 @@ class DataTable extends Component
                     }elseif($k=='or'){
                         $r->whereOr($v);
                     } elseif($k=='in'){
-                        $r->whereIn($v);
+                        foreach($v as $x =>$y){
+                            $field=$x;
+                            $param=$y;
+                        }
+                        $r->whereIn($field,$param);
                     }
                 }
             }
@@ -147,6 +151,8 @@ class DataTable extends Component
 
 
     }
+
+
 
     /**
      * Get the view / contents that represent the component.

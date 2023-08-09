@@ -16,18 +16,19 @@ class PostCategorySeeder extends Seeder
     {
         //
         PostCategory::create([
-            'name' => 'Edukasi',
-            'slugs' => 'edukasi'
+            'name' => 'Berita',
+            'slugs' => 'berita'
         ]);
 
         PostCategory::create([
-            'name' => 'Perkembangan Janin',
-            'slugs' => 'perkembangan-janin'
+            'name' => 'Tentang Kami',
+            'slugs' => 'about'
         ]);
 
         PostCategory::create([
-            'name' => 'HPHT',
-            'slugs' => 'hpht'
+            'name' => 'Prosedur & Regulasi',
+            'slugs' => 'prosedur-dan-regulasi'
         ]);
+
     }
 }
