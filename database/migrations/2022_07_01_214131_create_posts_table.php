@@ -18,14 +18,15 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('attachment')->nullable();
-            $table->string('cover')->nullable();
+            $table->string('cover')->nullable()->default('blog-5.jpg');
             $table->string('tags')->nullable();
-            $table->integer('view_count')->default(0)->unsigned();
-            $table->integer('like_count')->default(0)->unsigned();
-            $table->integer('share_count')->default(0)->unsigned();
+            $table->integer('view_count')->nullable()->default(0)->unsigned();
+            $table->integer('like_count')->nullable()->default(0)->unsigned();
+            $table->integer('share_count')->nullable()->default(0)->unsigned();
             $table->string('post_status'); // draft,publish
             $table->string('post_type'); // blog,page,multimedia
             $table->string('slug');
+            $table->string('author');
             $table->uuid();
             $table->timestamps();
             $table->softDeletes();

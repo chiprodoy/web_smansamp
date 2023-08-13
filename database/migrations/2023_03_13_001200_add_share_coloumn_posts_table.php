@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
-            $table->integer('share_count')->default(0)->unsigned()->after('like_count');
+        // Schema::table('posts', function (Blueprint $table) {
+        //     //
+        //     $table->integer('share_count')->default(0)->unsigned()->after('like_count');
 
-        });
+        // });
     }
 
     /**

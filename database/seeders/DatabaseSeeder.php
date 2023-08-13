@@ -20,8 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostCategorySeeder::class);
         $this->call(FileCategorySeeder::class);
         $this->call(MenuSeeder::class);
-
-
+        $this->call(PostSeeder::class);
 
     }
 }

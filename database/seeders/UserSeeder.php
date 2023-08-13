@@ -19,9 +19,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'uid'=>'-',
+            'uuid'=>'-',
             'name' => 'admin',
             'email' => 'admin@gmail.com',
+            'nomor_telpon'=>'00000',
             //'tempat_lahir'=>'palembang',
             //'tgl_lahir'=>'1986-02-24',
             //'pekerjaan'=>'admin',

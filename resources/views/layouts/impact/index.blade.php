@@ -71,7 +71,13 @@
 </head>
 
 <body>
+@if ($currentPage=='home')
 <div class="bg-home bg-cover">
+@else
+<div class="">
+
+@endif
+
   <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -87,27 +93,36 @@
       </div>
     </div>
   </section><!-- End Top Bar -->
-
-  <header id="header" class="header headertransparent d-flex align-items-center">
+    @if ($currentPage=='home')
+    <header id="header" class="header headertransparent d-flex align-items-center">
+    @else
+    <header id="header" class="header d-flex align-items-center">
+    @endif
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{{ url('/') }}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
          <img src="{{asset('theme/impact/assets/img/logo.png')}}" alt="LPPOM MUI SUMSEL">
         {{-- <h1>Impact<span>.</span></h1> --}}
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="{{ url('/') }}">Home</a></li>
+          <li class="dropdown"><a href="#about"><span>Tentang Kami</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+                <li><a href="{{route('public.post.show','sejarah')}}">Sejarah</a></li>
+                <li><a href="{{route('public.post.show','visi-dan-misi')}}">Visi Dan Misi</a></li>
+                <li><a href="{{route('public.post.show','nilai-nilai')}}">Nilai - Nilai</a></li>
+            </ul>
+          </li>
           <li class="dropdown"><a href="#services"><span>Prosedur & Regulasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-                <li><a href="#">Regulasi Halal di Indonesia</a></li>
-                <li><a href="#">Regulasi LPPOM MUI</a></li>
-                <li><a href="#">Prosedur pasar Indonesia</a></li>
-                <li><a href="#">Pendaftaran sertifikat halal</a></li>
-                <li><a href="#">Prosedur Pasar Luar negri</a></li>
-                <li><a href="#">Prosedur Keluhan dan Banding</a></li>
+                <li><a href="{{route('public.post.show','regulasi-halal-indonesia')}}">Regulasi Halal di Indonesia</a></li>
+                <li><a href="{{route('public.post.show','regulasi-lppom-mui')}}">Regulasi LPPOM MUI</a></li>
+                <li><a href="{{route('public.post.show','prosedur-pasar-indonesia')}}">Prosedur pasar Indonesia</a></li>
+                <li><a href="{{route('public.post.show','pendaftaran-sertifikat-halal')}}">Pendaftaran sertifikat halal</a></li>
+                <li><a href="{{route('public.post.show','prosedur-pasar-luar-negri')}}">Prosedur Pasar Luar negri</a></li>
+                <li><a href="{{route('public.post.show','prosedur-keluhan-dan-banding')}}">Prosedur Keluhan dan Banding</a></li>
 
                 {{-- <li class="dropdown"><a href="#"><span>Regulasi LPPOM MUI</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                   <ul>
@@ -121,9 +136,9 @@
 
               </ul>
           </li>
-          <li><a href="#team">Struktur Organisasi</a></li>
-          <li><a href="blog.html">Informasi</a></li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="{{route('public.post.show','struktur-organisasi')}}">Struktur Organisasi</a></li>
+          <li><a href="{{route('public.post.category','berita')}}">Informasi</a></li>
+          <li><a href="{{route('public.post.show','kontak')}}">Kontak</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -153,8 +168,10 @@
   <!-- Template Main JS File -->
   <script src="{{asset('theme/impact/assets/js/main.js')}}"></script>
   <script type="text/javascript">
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function() {myFunction()};
+    @if ($currentPage=='home')
+        // When the user scrolls the page, execute myFunction
+         window.onscroll = function() {myFunction()};
+    @endif
 
     // Get the header
     var header = document.getElementById("header");

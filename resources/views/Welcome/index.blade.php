@@ -57,16 +57,19 @@
 
         <div class="row gy-4">
           <div class="col-lg-6">
-            <h3>{{$contentSejarah->title}}</h3>
+            <h3><a href='{{route('public.post.show','sejarah')}}'>{{$contentSejarah->title}}</a></h3>
             {{-- <img src="{{asset('theme/impact/assets/img/logo.png')}}" class="img-fluid rounded-4 mb-4" alt=""> --}}
-           <p style="text-align: justify"> {{ Str::words(strip_tags($contentSejarah->description),80) }} <a href='#'>Selengkapnya</a></p>
+           <p style="text-align: justify">
+                {{ Str::words(strip_tags($contentSejarah->description),80) }}
+                <a href='{{route('public.post.show','sejarah')}}'>Selengkapnya</a>
+           </p>
         </div>
           <div class="col-lg-6">
             <div class="borderbottom ps-0 ps-lg-5">
               <ul>
-                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Visi & Misi</a></li>
-                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Nilai - Nilai</a></li>
-                <li><a href='#'><i class="bi bi-check-circle-fill"></i> Struktur Organisasi</a></li>
+                <li><a href='{{route('public.post.show','visi-dan-misi')}}'><i class="bi bi-check-circle-fill"></i> Visi & Misi</a></li>
+                <li><a href='{{route('public.post.show','nilai-nilai')}}'><i class="bi bi-check-circle-fill"></i> Nilai - Nilai</a></li>
+                <li><a href='{{route('public.post.show','struktur-organisasi')}}'><i class="bi bi-check-circle-fill"></i> Struktur Organisasi</a></li>
 
               </ul>
 
@@ -79,7 +82,7 @@
 
       </div>
     </section><!-- End About Us Section -->
-
+{{--
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
       <div class="container" data-aos="zoom-out">
@@ -99,7 +102,7 @@
 
       </div>
     </section><!-- End Clients Section -->
-
+ --}}
      <!-- ======= Our Services Section ======= -->
     <section id="services" class="services sections-bg">
       <div class="container" data-aos="fade-up">
@@ -114,67 +117,14 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item  position-relative">
                     <h3>{{ $item->title}}</h3>
+                    <div class="post-img">
+                        <img src="{{ $item->cover }}" alt="" class="img-fluid">
+                    </div>
                     <p>{{ $item->description}}</p>
-                    <a href="{{ route('post.show',$item->slug) }}" class="readmore stretched-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                    <a href="{{ route('public.post.show',$item->slug) }}" class="readmore stretched-link">Selengkapnya <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div><!-- End Service Item -->
             @endforeach
-
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <h3>Regulasi LPPOM MUI</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <h3>Prosedur Pasar Indonesia</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bounding-box-circles"></i>
-              </div>
-              <h3>Pendaftaran Sertifikat Halal</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-calendar4-week"></i>
-              </div>
-              <h3>Prosedur Pasar Luar Negri</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-chat-square-text"></i>
-              </div>
-              <h3>Prosedur Keluhan & Banding</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
 
         </div>
 
@@ -190,26 +140,25 @@
           </div>
 
           <div class="row gy-4">
-
+            @foreach ($contentBerita as $item)
             <div class="col-xl-4 col-md-6">
-                @foreach ($contentBerita as $item)
                     <article>
 
                         <div class="post-img">
-                        <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                        <img src="{{ $item->cover }}" alt="" class="img-fluid">
                         </div>
                         @foreach ($item->categories as $cat)
                             <p class="post-category">{{ $cat->name}}</p>
                         @endforeach
 
                         <h2 class="title">
-                        <a href="blog-details.html">{{ $item->title }}</a>
+                        <a href="{{ route('public.post.show',$item->slug) }}">{{ substr($item->title,0,32) }} ...</a>
                         </h2>
 
                         <div class="d-flex align-items-center">
-                        <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                        <img src="{{ asset('user.png')}}" alt="" class="img-fluid post-author-img flex-shrink-0">
                         <div class="post-meta">
-                            <p class="post-author">Maria Doe</p>
+                            <p class="post-author">Admin</p>
                             <p class="post-date">
                             <time datetime="{{ $item->created_at}}">{{ $item->created_at}}</time>
                             </p>
@@ -217,14 +166,14 @@
                         </div>
 
                     </article>
-                @endforeach
-
             </div><!-- End post list item -->
+            @endforeach
+
           </div><!-- End recent posts list -->
 
         </div>
       </section><!-- End Recent Blog Posts Section -->
-
+{{--
        <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq">
       <div class="container" data-aos="fade-up">
@@ -321,8 +270,9 @@
 
       </div>
     </section><!-- End Frequently Asked Questions Section -->
+ --}}
 
-
+{{--
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -401,6 +351,6 @@
 
       </div>
     </section><!-- End Contact Section -->
-
+ --}}
   </main><!-- End #main -->
 @endsection

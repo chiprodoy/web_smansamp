@@ -149,6 +149,7 @@ class BackendController extends Controller
         catch(QueryException $e)
         {
             $this->errorMsg='Data Gagal Disimpan '.$e->getMessage();
+            dd($this->errorMsg);
             Log::error($e);
             if(env('APP_DEBUG')) return $this->output('error',$request,$e->getMessage(),$this->createURL);
             else return $this->output('error',$request,'Data Gagal Disimpan',$this->createURL);
@@ -195,15 +196,17 @@ class BackendController extends Controller
     */
     public function setNewData($request){
         $m=new $this->modelRecords;
+        $resultPath=null;
         foreach($m->getFillable() as $k => $v){
             $this->newData["$v"]=$request->$v;
             //if($m::$formFields[$v]['type']==\App\View\Components\Viho\Form\InputFile::class && $request->file($v)){
             if($m::$formFields[$v]['type']==\App\View\Components\Viho\Form\InputFile::class){
-               // dd($request);
+
                 if(method_exists($this,'uploadMyFile')){
                     if($request->hasFile($v)){
                         $resultPath=$this->uploadMyFile($request->file($v));
                     }else{
+                        if($this->RECORD)
                         $resultPath=$this->RECORD->getAttributes()[$v];
                     }
                         $this->newData["$v"]=$resultPath;
@@ -228,7 +231,8 @@ class BackendController extends Controller
         try
         {
             $deleted=$this->modelRecords::where('uuid',$uid)->delete();
-            return $this->success($deleted,$request,$this->indexURL,'Data Berhasil Diupdate');
+
+            return $this->iSuccess($deleted,$request,$this->indexURL,'Data Berhasil Diupdate');
         }
         catch(QueryException $e)
         {

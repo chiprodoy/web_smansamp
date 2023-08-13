@@ -246,7 +246,7 @@ class PostController extends BackendController
                 $this->createResult->categories()->attach($v,['user_modify'=>'su']);
             }
         }
-
+        dd($this->createResult);
         return $this->output('success',$request,'Data Berhasil Disimpan',$this->createURL);
 
     }

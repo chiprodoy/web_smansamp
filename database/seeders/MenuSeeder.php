@@ -22,9 +22,21 @@ class MenuSeeder extends Seeder
         ]);
 
         Menu::create([
-            'label' => 'Post',
-            'mod_name'=>'post',
+            'label' => 'Berita',
+            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/berita',
             'sort_order'=>2
+        ]);
+
+        Menu::create([
+            'label' => 'Tentang Kami',
+            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/about',
+            'sort_order'=>3
+        ]);
+
+        Menu::create([
+            'label' => 'Prosedur & Regulasi',
+            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/prosedur-dan-regulasi',
+            'sort_order'=>4
         ]);
         //
     }

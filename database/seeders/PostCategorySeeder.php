@@ -14,20 +14,30 @@ class PostCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // 1
         PostCategory::create([
+            'uuid'=>'-',
             'name' => 'Berita',
             'slugs' => 'berita'
         ]);
-
+        // 2
         PostCategory::create([
+            'uuid'=>'-',
             'name' => 'Tentang Kami',
             'slugs' => 'about'
         ]);
-
+        // 3
         PostCategory::create([
-            'name' => 'Prosedur & Regulasi',
+            'uuid'=>'-',
+            'name' => 'Prosedur Dan Regulasi',
             'slugs' => 'prosedur-dan-regulasi'
+        ]);
+
+        // 4
+        PostCategory::create([
+            'uuid'=>'-',
+            'name' => 'headline',
+            'slugs'=>'headline'
         ]);
 
     }

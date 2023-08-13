@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class Post extends MainModel
@@ -35,7 +36,8 @@ class Post extends MainModel
         'post_type',
         'slug',
         'uuid',
-        'view_count'
+        'view_count',
+        'author'
     ];
 
 
@@ -70,6 +72,8 @@ class Post extends MainModel
         'slug'=> ['field'=>'slug','title'=>'Slug','type'=>InputText::class],
         'uuid'=> ['field'=>'uuid','type'=>InputHidden::class],
         'tags'=> ['field'=>'tags','type'=>InputHidden::class],
+        'author'=> ['field'=>'author','type'=>InputHidden::class],
+
         'view_count'=> ['field'=>'view_count','type'=>InputHidden::class],
         'post_category'=> [
             'field'=>'post_category',
@@ -119,6 +123,17 @@ class Post extends MainModel
     {
         $this->attributes['slug'] = (empty($value)) ? Str::slug($this->title) : $value;
     }
+
+       /**
+     * Set the Post slug
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setAuthorAttribute($value)
+    {
+        $this->attributes['author'] = (empty($value)) ? Auth::user()->name : $value;
+    }
     /**
      * Get the uid.
      *
@@ -137,7 +152,7 @@ class Post extends MainModel
      */
     public function getCoverAttribute($value)
     {
-        if(!empty($value)) return asset('storage/'.$value);
+        if(!empty($value)) return asset('storage/images/'.$value);
     }
       /**
      * Get the attachment.

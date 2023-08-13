@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class,'index'])->name('index');
 
+Route::prefix('post')->group(function(){
 
-Route::get('/post', function () {
-    return view('welcome');
-})->name('post');
+    Route::get('/',[PostController::class,'index'])->name('public.post.index');
+
+
+    Route::get('/{slug}',[WelcomeController::class,'post'])->name('public.post.show');
+
+});
+
+Route::get('/category/{slug}',[WelcomeController::class,'blog'])->name('public.post.category');
+
+Route::prefix('page')->group(function(){
+
+    Route::get('/',[PageController::class,'index'])->middleware('auth:sanctum')->name('page.index');
+    Route::get('/{slug}',[PageController::class,'show'])->name('page.show');
+
+});
+
+
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 
