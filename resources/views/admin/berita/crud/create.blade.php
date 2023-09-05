@@ -7,6 +7,22 @@
                 @csrf
                 <div class="card-header">Tambah Konten</div>
                 <div class="card-body">
+                        @if (Session::has('response.message'))
+                            <x-viho::alert id="alert_notif" class="alert-info">
+                                @foreach (Session::get('response') as $item)
+                                    {{ $item }}
+                                @endforeach
+                            </x-viho::alert>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <div class="mb-3">
                         <label for="title" class="form-label">Judul</label>
                         <input type="text" class="form-control" id="title" name="title" value="" placeholder="">
@@ -30,12 +46,18 @@
                         <input type="file" class="form-control" id="cover" name="cover" placeholder="">
 
                     </div>
+
+                    <div class="mb-3">
+                        <label for="icon" class="form-label">Icon</label>
+                        <input type="text" class="form-control" id="icon" name="icon" value="bi bi-briefcase" placeholder="">
+                    </div>
+
                     <div class="mb-3">
                         <label for="post_status" class="form-label">Status</label>
                         <select id="post_status" name="post_status" class="form-select">
                             <option value="">Silahkan Pilih</option>
                             <option value="draft">draft</option>
-                            <option value="publish">publish</option>
+                            <option value="publish" selected>publish</option>
                         </select>
                     </div>
                     <input type="hidden" id="post_type" name="post_type" value="blog">

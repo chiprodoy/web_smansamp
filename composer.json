@@ -27,7 +27,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "classmap": ["../vendor/MF/"],
+        "classmap": ["../../vendor/MF/"],
         "files":[
             "app/Helpers/route.php"
         ]

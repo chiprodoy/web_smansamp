@@ -30,6 +30,7 @@ class Post extends MainModel
         'title',
         'description',
         'attachment',
+        'icon',
         'cover',
         'tags',
         'post_status',
@@ -70,6 +71,7 @@ class Post extends MainModel
             'option'=>[[PostType::BLOG,PostType::PAGE,PostType::MULTIMEDIA]]
         ],
         'slug'=> ['field'=>'slug','title'=>'Slug','type'=>InputText::class],
+        'icon'=> ['field'=>'icon','title'=>'Icon','type'=>InputText::class],
         'uuid'=> ['field'=>'uuid','type'=>InputHidden::class],
         'tags'=> ['field'=>'tags','type'=>InputHidden::class],
         'author'=> ['field'=>'author','type'=>InputHidden::class],
@@ -152,7 +154,7 @@ class Post extends MainModel
      */
     public function getCoverAttribute($value)
     {
-        if(!empty($value)) return asset('storage/images/'.$value);
+        if(!empty($value)) return asset('storage/'.$value);
     }
       /**
      * Get the attachment.

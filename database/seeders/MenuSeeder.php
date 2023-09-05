@@ -15,28 +15,47 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
+      /*
         Menu::create([
             'label' => 'Dashboard',
             'mod_name'=>'dashboard',
             'sort_order'=>1
         ]);
-
+       */
         Menu::create([
             'label' => 'Berita',
-            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/berita',
+            'mod_name'=>'http://localhost:8000/admin/browse/berita',
             'sort_order'=>2
         ]);
 
         Menu::create([
-            'label' => 'Tentang Kami',
-            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/about',
+            'label' => 'Pengumuman',
+            'mod_name'=>'http://localhost:8000/admin/browse/pengumuman',
             'sort_order'=>3
         ]);
 
         Menu::create([
-            'label' => 'Prosedur & Regulasi',
-            'mod_name'=>'http://localhost/lppom_mui/public/admin/browse/prosedur-dan-regulasi',
+            'label' => 'Profil',
+            'mod_name'=>'http://localhost:8000/admin/browse/profil',
             'sort_order'=>4
+        ]);
+
+        Menu::create([
+            'label' => 'Fasilitas',
+            'mod_name'=>'http://localhost:8000/admin/browse/fasilitas',
+            'sort_order'=>5
+        ]);
+
+        Menu::create([
+            'label' => 'Prestasi',
+            'mod_name'=>'http://localhost:8000/admin/browse/prestasi',
+            'sort_order'=>6
+        ]);
+
+        Menu::create([
+            'label' => 'Kerjasama',
+            'mod_name'=>'http://localhost:8000/admin/browse/kerja-sama',
+            'sort_order'=>7
         ]);
         //
     }

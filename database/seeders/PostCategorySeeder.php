@@ -23,9 +23,10 @@ class PostCategorySeeder extends Seeder
         // 2
         PostCategory::create([
             'uuid'=>'-',
-            'name' => 'Tentang Kami',
+            'name' => 'Profil',
             'slugs' => 'about'
         ]);
+
         // 3
         PostCategory::create([
             'uuid'=>'-',
@@ -40,5 +41,39 @@ class PostCategorySeeder extends Seeder
             'slugs'=>'headline'
         ]);
 
+        // 5
+        PostCategory::create([
+            'uuid'=>'-',
+            'parent_category_id'=>2,
+            'name' => 'Sambutan',
+            'slugs' => 'sambutan'
+        ]);
+
+        // 6
+        PostCategory::create([
+            'uuid'=>'-',
+            'parent_category_id'=>2,
+            'name' => 'Fasilitas',
+            'slugs' => 'fasilitas'
+        ]);
+        // 7
+        PostCategory::create([
+            'uuid'=>'-',
+            'name' => 'Pengumuman',
+            'slugs' => 'pengumuman'
+        ]);
+        // 8
+        PostCategory::create([
+            'uuid'=>'-',
+            'name' => 'Prestasi',
+            'slugs' => 'prestasi'
+        ]);
+
+               // 9
+        PostCategory::create([
+            'uuid'=>'-',
+            'name' => 'Kerja Sama',
+            'slugs' => 'kerja-sama'
+        ]);
     }
 }

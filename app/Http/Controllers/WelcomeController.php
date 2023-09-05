@@ -11,8 +11,12 @@ class WelcomeController extends Controller
 {
     public $contentSejarah;
     public $contentBerita;
+    public $contentPengumuman;
     public $contentProsedurRegulasi;
+    public $contentFasilitas;
     public $kontak;
+    public $sambutan;
+    public $headlineContent;
     public $postContent;
     public $currentPage;
     public $similarPost;
@@ -22,19 +26,42 @@ class WelcomeController extends Controller
     const NEWSCATEGORY=1;
     const ABOUT=2;
     const REGULASI=3;
+    const HEADLINE=4;
+    const SAMBUTAN=5;
+    const FASILITAS=6;
+    const PENGUMUMAN=7;
+
 
 
 
     public function index(){
         $this->currentPage='home';
         $this->contentSejarah=Post::where('slug','sejarah')->first();
+
+        $this->sambutan=Post::whereHas('categories',function($query){
+            $query->where('id','=',$this::SAMBUTAN);
+        })->first();
+
+        $this->headlineContent=Post::whereHas('categories',function($query){
+            $query->where('id','=',$this::HEADLINE);
+        })->get();
+
         $this->kontak=Post::where('slug','kontak')->first();
 
         $this->contentProsedurRegulasi=Post::take(6)->whereHas('categories',function($query){
             $query->where('id','=',$this::REGULASI);
         })->get();
-        $this->contentBerita=Post::take(9)->orderBy('id','desc')->whereHas('categories',function($query){
+
+        $this->contentFasilitas=Post::take(6)->whereHas('categories',function($query){
+            $query->where('id','=',$this::FASILITAS);
+        })->get();
+
+        $this->contentBerita=Post::take(4)->orderBy('id','desc')->whereHas('categories',function($query){
             $query->where('id','=',$this::NEWSCATEGORY);
+        })->get();
+
+        $this->contentPengumuman=Post::take(4)->orderBy('id','desc')->whereHas('categories',function($query){
+            $query->where('id','=',$this::PENGUMUMAN);
         })->get();
 
         return view('Welcome.index',get_object_vars($this));

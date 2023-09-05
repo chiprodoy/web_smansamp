@@ -1,4 +1,4 @@
-@extends('layouts.impact.index')
+@extends('layouts.sailore.index')
 @section('content')
 
 <main id="main">
@@ -33,12 +33,12 @@
               <h2 class="title">{{$postContent->title}}</h2>
 
               <div class="meta-top">
-                <ul>
+
                  @isset($postContent->author)
-                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{$postContent->author}}</a></li>
+                     <i class="bi bi-person"></i> <a href="#">{{$postContent->author}}</a>
                  @endisset
-                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="{{$postContent->created_at}}">{{$postContent->created_at}}</time></a></li>
-                </ul>
+                  <i class="bi bi-clock"></i> <a href="#"><time datetime="{{$postContent->created_at}}">{{$postContent->created_at}}</time></a>
+
               </div><!-- End meta top -->
 
               <div class="content">

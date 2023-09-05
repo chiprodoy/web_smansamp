@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('attachment')->nullable();
+            $table->string('icon')->default('bi bi-briefcase')->nullable();
             $table->string('cover')->nullable()->default('blog-5.jpg');
             $table->string('tags')->nullable();
             $table->integer('view_count')->nullable()->default(0)->unsigned();

@@ -98,7 +98,9 @@ class PostController extends BackendController
      * Otherwise, the request will fail with a 400 error, and a response listing the failed services.
      **/
     public function browse(Request $request,$categoryslug){
+        //get kategori by slug
         $cat=PostCategory::where('slugs',$categoryslug)->first();
+
         $this->titleOfIndexPage=$cat->name;
         $this->indexURL=route('browse.index',$cat->slugs);
         $this->createURL=route('browse.create',$cat->slugs);
@@ -246,7 +248,6 @@ class PostController extends BackendController
                 $this->createResult->categories()->attach($v,['user_modify'=>'su']);
             }
         }
-        dd($this->createResult);
         return $this->output('success',$request,'Data Berhasil Disimpan',$this->createURL);
 
     }
